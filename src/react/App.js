@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { channels } from '../shared/constants';
 import Login from './login/login.js';
