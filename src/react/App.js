@@ -4,9 +4,7 @@ import './App.css';
 import { channels } from '../shared/constants';
 import Login from './login/login.js';
 import Register from './register/register.js';
-import Home from './home/home.js';
 import HomePage from './homepage/homepage.js';
-import Jeditor from './jeditor/jeditor.js';
 
 
 const { ipcRenderer } = window; 
@@ -47,11 +45,7 @@ class App extends React.Component {
             :(
               this.state.route === 'homepage'
               ? <HomePage onRouteChange = {this.onRouteChange}/>
-              : (
-                this.state.route === "editor"
-                ?<Jeditor onRouteChange = {this.onRouteChange}/>
-                : <HomePage onRouteChange = {this.onRouteChange}/>
-             )
+              : null
             )
           )
         }

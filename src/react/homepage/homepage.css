@@ -1,102 +1,95 @@
-.header{
-    display: grid;
-    grid-template-columns: [side_bar]16% 
-                           [display] 35% 
-                           [visual-end] auto 
-                           [dash-end] 10% [final];
-    grid-template-rows: [header]15%
-                        [header-end] 20% 
-                        [column1-end]20%
-                        [column2-end] 20%
-                        [column3-end] auto [end-column];
+.home-bg{
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: #1d1e38;
+    margin: 0px;
+    padding: 0px;
+}
 
-    font-family: 'Ubuntu', sans-serif;
+.menu-bar{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.header{
+    margin: 0px;
+    padding: 0px;
+}
+
+.heading{
+    color: aliceblue;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+
+.menu{
+    color: aliceblue;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 100px;
+    
+}
+
+.menu-op{
+    margin:0px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.settings{
+    margin-top: 510px;
+}
+
+.app-disp{
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    width: 90%;
+    height: auto;
+    background-color: #e7e2df;
+    border-radius: 30px;
+}
+
+.in-cont1{
+    background-color: aliceblue;
+    width: 40%;
+    height: 100%;
+    border-radius: 15px;
+    border-top-left-radius: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .curr-date{
-    color: rgb(32, 145, 221);
-}
-.logo-section{
-    grid-column-start: side_bar;
-    grid-column-end: display;
-    grid-row-start: header;
-    grid-row-end: header-end;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-bottom: 30px;
 }
 
-.menu-options{
-    margin-top: 60px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    cursor: pointer;
+.in-cont1-title{
+    font-size: 25px;
+    margin-left: 10px;
 }
 
-.menu-op1{
-    margin-top: 200px;
+.in-cont2{
+    width: 60%;
+    height: 700px;
+    border-radius: 15px;
+    border-top-right-radius: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: aliceblue;
+    overflow:scroll
 }
-
-.menu-options:hover {
-    color: #1e62ff;
-}
-
-.view-bar{
-    padding: 20px;
-    border-radius: 50px;
-    grid-column-start: display;
-    grid-column-end: visual-end;
-    grid-row-start: header;
-    grid-row-end: end-column;
-    background-color:#E8ECF5;
-}
-
-.day-schedule{
-    grid-column-start: visual-end;
-    grid-column-end: final;
-    grid-row-start: header-end;
-    grid-row-end: column2-end;
-    margin-left: 50px;
-}
-
-ul{
-    list-style-type: none;
-}
-
-.entry1, .entry2, .entry3{
-    border-radius: 30px;
-    padding: 10px;
-    margin: 10px;
-}
-
-.entry1{
-    background-color:#082FFC;
-}
-
-.entry2{
-    background-color:#ff6600;
-}
-
-.entry3{
-    background-color: #A436FC;
-}
-
-.profile-info{
-    padding: 30px;
-    grid-column-start: dash-end;
-    grid-column-end: final;
-    grid-row-start: header;
-    grid-row-end: header-end;
-}
-
-
-.profile-info{
-    display: flex;
-}
-
-.day{
-    font-size: 40px;
-}
-
-.sub-text{
-    color: gray;
-}
-
 
