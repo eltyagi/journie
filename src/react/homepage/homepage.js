@@ -9,7 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Task from './taskCard/taskCard.js';
+import TodayTask from './todayTask/todayTask.js'
 import Editor from './jeditor/jeditor.js';
 
 
@@ -25,6 +25,14 @@ class HomePage extends React.Component{
             currentDate: date
         }
         
+    }
+
+    onAddToday = (event) => {
+
+    }
+
+    onAddDaily = (event) => {
+
     }
 
     render(){
@@ -59,23 +67,24 @@ class HomePage extends React.Component{
                                         
                                         <div className = 'in-cont1-menu'>
                                             
-                                                <p className = 'pointer dim in-cont1-op'>
-                                                <Link to = "/" style={{ textDecoration: 'none', color: 'black' }}>
-                                                    Today
-                                                </Link>
-                                                </p>
+                                            <p className = 'pointer dim in-cont1-op'>
+                                            <Link to = "/" style={{ textDecoration: 'none', color: 'black' }}>
+                                                Today
+                                            </Link>
+                                            </p>
                                             
                                             <Link to = "/daily" style={{ textDecoration: 'none', color: 'black' }}>
                                                 <p className = 'pointer in-cont1-op'>Daily</p>
                                             </Link>
+
                                             <Link to = "/completed" style={{ textDecoration: 'none', color: 'black' }}>
-                                                <p className = 'pointer in-cont1-op'>Completed</p>
+                                                <p className = 'pointer in-cont1-op'>Notes</p>
                                             </Link>
                                         </div>
 
                                         <Switch>
                                             <Route path="/daily">
-                                                <Task/>
+                                              
                                             </Route>
                                             <Route path="/completed">
                                                 <div>
@@ -86,7 +95,7 @@ class HomePage extends React.Component{
                                             </Route>
                                             <Route path="/">
                                                 <div>
-                                                
+                                                    <TodayTask/>
                                                 </div>
                                             </Route>
                                         </Switch>

@@ -54,12 +54,12 @@
     margin-bottom: 15px;
     width: 90%;
     height: auto;
-    background-color: #e7e2df;
+    background-color: #ffe5d5;
     border-radius: 30px;
 }
 
 .in-cont1{
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     width: 30%;
     height: 730px;
     border-radius: 15px;
@@ -98,7 +98,7 @@
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     overflow:scroll
 }
 

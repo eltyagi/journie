@@ -1,0 +1,16 @@
+.todayTask{
+    margin-left: 10px;
+}
+
+.input-field{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+.input-field:focus {
+    outline: none;
+    border-bottom-style: groove;
+  }
