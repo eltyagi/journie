@@ -1,6 +1,7 @@
 import React from "react";
 import './todayTask.css';
 import "tachyons";
+import TodayTaskPortal from './todayTaskPortal/todayTaskPortal.js';
 
 
 class todayTask extends React.Component{
@@ -10,7 +11,8 @@ class todayTask extends React.Component{
             addTaskVisibility: false,
             taskType: "",
             taskTitle: "",
-            taskDesc: ""
+            taskDesc: "",
+            todayTaskData: []
         }
 
 
@@ -33,7 +35,7 @@ class todayTask extends React.Component{
     }
 
     onSubmitTask = () => {
-        fetch('http://localhost:3001/', {
+        fetch('http://localhost:3005/', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -42,12 +44,19 @@ class todayTask extends React.Component{
                 taskDesc: this.state.taskDesc
             })
         })
-            .then(response => response.json())
-            .then(console.log("Communication achieved"))
+            .then((response => response.json()))
+            .then(console.log("Communication achieved, for today tasks."))
+            .then(todayTaskData => {
+                this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
+            })
+            
+            
         
     }
 
     render(){
+
+
         return(
             <div className = 'todayTask'>
                 <div onClick = {this.toggleAddTask} className = 'addTask_today pointer'>
@@ -62,8 +71,11 @@ class todayTask extends React.Component{
                     <input onChange = {this.onTaskDesChange} type ="text" placeholder = "Description" className = "input-field"></input>
                     <br/>
                     <p onClick = {() => {this.toggleAddTask(); this.onSubmitTask()}} className = 'add-button pointer'>Add</p>
-
                 </div>
+
+                <TodayTaskPortal taskData = {this.state.todayTaskData}/>
+
+
             </div>
         );
     }
