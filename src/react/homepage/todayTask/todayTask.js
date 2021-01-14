@@ -45,17 +45,36 @@ class todayTask extends React.Component{
             })
         })
             .then((response => response.json()))
-            .then(console.log("Communication achieved, for today tasks."))
             .then(todayTaskData => {
                 this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
-            })
-            
-            
-        
+            }) 
+            console.log(this.state.todayTaskData)
     }
 
-    render(){
+    onPageOpen = () => {
+        fetch('http://localhost:3005/', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                taskType: this.state.taskType,
+                taskTitle: this.state.taskTitle,
+                taskDesc: this.state.taskDesc
+            })
+            })
+            .then((response => response.json()))
+            .then(todayTaskData => {
+                this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
+            }) 
+            console.log(this.state.todayTaskData)
+    }
 
+    componentDidCatch = () => {
+        this.onPageOpen();
+    }
+
+   
+
+    render(){
 
         return(
             <div className = 'todayTask'>

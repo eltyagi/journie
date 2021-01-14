@@ -4,7 +4,7 @@ import TaskCard from './taskCard/taskCard.js';
 
 class todayTaskPortal extends React.Component{
     constructor(props){
-        super(props);
+        super();
 
         this.state = {
 
@@ -12,13 +12,23 @@ class todayTaskPortal extends React.Component{
     }
 
     render(){
-        const task_data = this.props;
-        console.log(task_data)
+        
+        const cardArray = this.props.taskData.map(
+            (user,i) => {
+                return (
+                    <TaskCard 
+                    key = {i}
+                    type = {this.props.taskData[i].type}
+                    title = {this.props.taskData[i].title}
+                    desc = {this.props.taskData[i].desc}/>
+                );
+            })
+        
 
 
         return(
             <div>
-               
+               {cardArray}
             </div>
         );
     }
