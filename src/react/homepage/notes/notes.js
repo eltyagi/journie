@@ -1,18 +1,18 @@
 import React from "react";
-import './todayTask.css';
+import './notes.css';
 import "tachyons";
-import TodayTaskPortal from './todayTaskPortal/todayTaskPortal.js';
+import NotesPortal from './notesPortal/notesPortal.js';
 
 
-class todayTask extends React.Component{
+
+class notes extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             addTaskVisibility: false,
-            taskType: "",
             taskTitle: "",
             taskDesc: "",
-            todayTaskData: []
+            dailyTaskData: []
         }
 
 
@@ -35,7 +35,7 @@ class todayTask extends React.Component{
     }
 
     onSubmitTask = () => {
-        fetch('http://localhost:3005/', {
+        fetch('http://localhost:3005/notes', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -45,27 +45,26 @@ class todayTask extends React.Component{
             })
         })
             .then((response => response.json()))
-            .then(todayTaskData => {
-                this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
+            .then(dailyTaskData => {
+                this.setState(Object.assign(this.state.dailyTaskData, {dailyTaskData: dailyTaskData}))
             }) 
-            console.log(this.state.todayTaskData)
+            console.log(this.state.dailyTaskData)
     }
 
     onPageOpen = () => {
-        fetch('http://localhost:3005/', {
+        fetch('http://localhost:3005/notes', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                taskType: this.state.taskType,
                 taskTitle: this.state.taskTitle,
                 taskDesc: this.state.taskDesc
             })
             })
             .then((response => response.json()))
-            .then(todayTaskData => {
-                this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
+            .then(dailyTaskData => {
+                this.setState(Object.assign(this.state.dailyTaskData, {dailyTaskData: dailyTaskData}))
             }) 
-            console.log(this.state.todayTaskData)
+            console.log(this.state.dailyTaskData)
     }
 
     componentDidMount = () => {
@@ -77,14 +76,12 @@ class todayTask extends React.Component{
     render(){
 
         return(
-            <div className = 'todayTask'>
-                <div onClick = {this.toggleAddTask} className = 'addTask_today pointer'>
+            <div className = 'notes'>
+                <div onClick = {this.toggleAddTask} className = 'addTask_daily pointer'>
                     Add New
                 </div>
 
                 <div style = {{visibility: this.state.addTaskVisibility ? "visible" : "hidden"}}>
-                    <input onChange = {this.onTaskTypeChange} type ="text" placeholder = "Task/Event" className = "input-field"></input>
-                    <br/>
                     <input onChange = {this.onTaskTitleChange} type ="text" placeholder = "Title" className = "input-field"></input>
                     <br/>
                     <input onChange = {this.onTaskDesChange} type ="text" placeholder = "Description" className = "input-field"></input>
@@ -92,7 +89,7 @@ class todayTask extends React.Component{
                     <p onClick = {() => {this.toggleAddTask(); this.onSubmitTask()}} className = 'add-button pointer'>Add</p>
                 </div>
 
-                <TodayTaskPortal taskData = {this.state.todayTaskData}/>
+                <NotesPortal taskData = {this.state.dailyTaskData}/>
 
 
             </div>
@@ -100,4 +97,4 @@ class todayTask extends React.Component{
     }
 }
 
-export default todayTask;
+export default notes;

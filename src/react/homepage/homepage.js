@@ -9,7 +9,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import TodayTask from './todayTask/todayTask.js'
+import TodayTask from './todayTask/todayTask.js';
+import DailyTask from './dailyTask/dailyTask.js';
+import Notes from './notes/notes.js';
 import Editor from './jeditor/jeditor.js';
 
 
@@ -47,7 +49,7 @@ class HomePage extends React.Component{
                             </p>
 
                             <div className = 'menu'>
-                            <p className = 'menu-op pointer'>Journal</p>
+                                <p className = 'menu-op pointer'>Journal</p>
                                 <p className = 'menu-op pointer'>Overview</p>
                                 <p className = 'menu-op pointer'>Progress</p>
                                 <p className = 'menu-op pointer settings'>Settings</p>
@@ -77,20 +79,22 @@ class HomePage extends React.Component{
                                                 <p className = 'pointer in-cont1-op'>Daily</p>
                                             </Link>
 
-                                            <Link to = "/completed" style={{ textDecoration: 'none', color: 'black' }}>
+                                            <Link to = "/notes" style={{ textDecoration: 'none', color: 'black' }}>
                                                 <p className = 'pointer in-cont1-op'>Notes</p>
                                             </Link>
                                         </div>
 
                                         <Switch>
                                             <Route path="/daily">
-                                              
+                                            <div>
+                                                <DailyTask/>
+                                            </div>
                                             </Route>
-                                            <Route path="/completed">
+                                            <Route path="/notes">
                                                 <div>
-                                                    <h1>
-                                                        HI
-                                                    </h1>
+                                                    <div>
+                                                        <Notes/>
+                                                    </div>
                                                 </div>
                                             </Route>
                                             <Route path="/">
