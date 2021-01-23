@@ -49,10 +49,18 @@ class HomePage extends React.Component{
                             </p>
 
                             <div className = 'menu'>
-                                <p className = 'menu-op pointer'>Journal</p>
-                                <p className = 'menu-op pointer'>Overview</p>
-                                <p className = 'menu-op pointer'>Progress</p>
-                                <p className = 'menu-op pointer settings'>Settings</p>
+                                <Link to = "/" style={{ textDecoration: 'none', color: 'white' }}>
+                                    <p className = 'menu-op pointer'>Journal</p>
+                                </Link>
+                                <Link to = "/dashboard" style={{ textDecoration: 'none', color: 'white' }}>
+                                    <p className = 'menu-op pointer'>Overview</p>
+                                </Link>
+                                <Link to = "/progress" style={{ textDecoration: 'none', color: 'white' }}>
+                                    <p className = 'menu-op pointer'>Progress</p>
+                                </Link>
+                                <Link to = "/settings" style={{ textDecoration: 'none', color: 'white' }}>
+                                    <p className = 'menu-op pointer settings'>Settings</p>
+                                </Link>
                             </div>
                         </div>
 
@@ -65,8 +73,6 @@ class HomePage extends React.Component{
                                         <p className = 'curr-date'>
                                             {this.state.currentDate}
                                         </p>
-
-                                        
                                         <div className = 'in-cont1-menu'>
                                             
                                             <p className = 'pointer dim in-cont1-op'>
@@ -92,9 +98,7 @@ class HomePage extends React.Component{
                                             </Route>
                                             <Route path="/notes">
                                                 <div>
-                                                    <div>
-                                                        <Notes/>
-                                                    </div>
+                                                    <Notes/>
                                                 </div>
                                             </Route>
                                             <Route path="/">
@@ -108,7 +112,28 @@ class HomePage extends React.Component{
 
                                 <div className = 'in-cont2'>
                                     <div className = 'ma3'>
-                                    <Editor/>
+                                        <Switch>
+                                                <Route path="/dashboard">
+                                                    <div>
+                                                       dashboard
+                                                    </div>
+                                                </Route>
+                                                <Route path="/progress">
+                                                    <div>
+                                                        progress
+                                                    </div>
+                                                </Route>
+                                                <Route path="/settings">
+                                                    <div>
+                                                        settings
+                                                    </div>
+                                                </Route>
+                                                <Route path="/">
+                                                    <div>
+                                                        <Editor/>
+                                                    </div>
+                                                </Route>
+                                            </Switch>
                                     </div>
                                 </div>
 

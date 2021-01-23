@@ -7,6 +7,7 @@ import Quote from "@editorjs/quote";
 import Marker from "@editorjs/marker";
 import CheckList from "@editorjs/checklist";
 import SimpleImage from "@editorjs/simple-image";
+import Paragraph from '@editorjs/paragraph'
 
 export const EDITOR_JS_TOOLS = {
   embed: Embed,
@@ -17,5 +18,6 @@ export const EDITOR_JS_TOOLS = {
   header: Header,
   quote: Quote,
   checklist: CheckList,
-  simpleImage: SimpleImage
+  simpleImage: SimpleImage,
+  paragraph: Paragraph,
 };
