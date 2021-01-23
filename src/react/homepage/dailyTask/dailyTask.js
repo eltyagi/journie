@@ -36,7 +36,7 @@ class dailyTask extends React.Component{
     }
 
     onSubmitTask = () => {
-        fetch('http://localhost:3005/daily', {
+        fetch('http://localhost:3005/dailyAdd', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

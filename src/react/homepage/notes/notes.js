@@ -35,7 +35,7 @@ class notes extends React.Component{
     }
 
     onSubmitTask = () => {
-        fetch('http://localhost:3005/notes', {
+        fetch('http://localhost:3005/notesAdd', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
