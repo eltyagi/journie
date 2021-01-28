@@ -13,6 +13,7 @@ import TodayTask from './todayTask/todayTask.js';
 import DailyTask from './dailyTask/dailyTask.js';
 import Notes from './notes/notes.js';
 import Editor from './jeditor/jeditor.js';
+import Overview from './overview/overview.js';
 
 
 class HomePage extends React.Component{
@@ -115,7 +116,7 @@ class HomePage extends React.Component{
                                         <Switch>
                                                 <Route path="/dashboard">
                                                     <div>
-                                                       dashboard
+                                                       <Overview/>
                                                     </div>
                                                 </Route>
                                                 <Route path="/progress">
