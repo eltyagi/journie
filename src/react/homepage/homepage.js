@@ -14,7 +14,10 @@ import DailyTask from './dailyTask/dailyTask.js';
 import Notes from './notes/notes.js';
 import Editor from './jeditor/jeditor.js';
 import Overview from './overview/overview.js';
-
+import journal_image from './journal.png';
+import overview_image from './icons8-view-64.png';
+import graph_image from './graph.png';
+import settings_image from './settings.png';
 
 class HomePage extends React.Component{
     constructor(props){
@@ -46,21 +49,21 @@ class HomePage extends React.Component{
                     <div className = 'home-bg' style = {{display: 'flex'}}>
                         <div className = 'menu-bar'>
                             <p className = 'heading'>
-                                Journie.
+                                J.
                             </p>
 
                             <div className = 'menu'>
                                 <Link to = "/" style={{ textDecoration: 'none', color: 'white' }}>
-                                    <p className = 'menu-op pointer'>Journal</p>
+                                    <p className = 'menu-op pointer'><img alt = '' src = {journal_image} height = 'auto' width = '40px'/></p>
                                 </Link>
                                 <Link to = "/dashboard" style={{ textDecoration: 'none', color: 'white' }}>
-                                    <p className = 'menu-op pointer'>Overview</p>
+                                    <p className = 'menu-op pointer'><img alt = '' src = {overview_image} height = 'auto' width = '40px'/></p>
                                 </Link>
                                 <Link to = "/progress" style={{ textDecoration: 'none', color: 'white' }}>
-                                    <p className = 'menu-op pointer'>Progress</p>
+                                    <p className = 'menu-op pointer'><img alt = '' src = {graph_image} height = 'auto' width = '40px'/></p>
                                 </Link>
                                 <Link to = "/settings" style={{ textDecoration: 'none', color: 'white' }}>
-                                    <p className = 'menu-op pointer settings'>Settings</p>
+                                    <p className = 'menu-op pointer settings'><img alt = '' src = {settings_image} height = 'auto' width = '40px'/></p>
                                 </Link>
                             </div>
                         </div>
@@ -100,6 +103,11 @@ class HomePage extends React.Component{
                                             <Route path="/notes">
                                                 <div>
                                                     <Notes/>
+                                                </div>
+                                            </Route>
+                                            <Route path="/progress">
+                                                <div>
+                                                    <h1>Working?</h1>
                                                 </div>
                                             </Route>
                                             <Route path="/">
