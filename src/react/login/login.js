@@ -7,8 +7,30 @@ class login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+     email: '',
+     password: ''
     }
+}
+
+
+onEmailChange = (event) => {
+  this.setState({email: event.target.value});
+}
+onPasswordChange = (event) => {
+  this.setState({password: event.target.value});
+}
+
+onSubmitSignin = () => {
+  fetch('http://localhost:3005/signin', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+      })
+  })
+  .then(response => response.json())
+  .then(response => console.log(response))
 }
 
   render() {
@@ -20,18 +42,18 @@ class login extends React.Component {
               <legend class="f4 fw6 ph0 mh0">Sign In</legend>
               <div class="mt3">
                 <label class="db fw6 lh-copy f6" for="email-address">Email</label>
-                <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
+                <input onClick = {this.onEmailChange} class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
               </div>
               <div class="mv3">
                 <label class="db fw6 lh-copy f6" for="password">Password</label>
-                <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
+                <input onClick = {this.onPasswordChange} class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
               </div>
             </fieldset>
             <div class="">
               <input onClick = {() => this.props.onRouteChange('homepage')} class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
             </div>
             <div class="lh-copy mt3">
-              <a href="#0" class="f6 link dim black db" onClick = {() => this.props.onRouteChange('register')}>Sign up</a>
+              <a href="#0" class="f6 link dim black db" onClick = {() => {this.props.onRouteChange('register'); this.onSubmitSignin()}}>Sign up</a>
               <a href="#0" class="f6 link dim black db">Forgot your password?</a>
             </div>
         </main>

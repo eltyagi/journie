@@ -40,7 +40,7 @@ class App extends React.Component {
           ? <Login onRouteChange = {this.onRouteChange}/>
           : (
             this.state.route === 'register'
-            ?<Register onRouteChange = {this.onRouteChange}/>
+            ? <Register onRouteChange = {this.onRouteChange}/>
             :(
               this.state.route === 'homepage'
               ? <HomePage onRouteChange = {this.onRouteChange}/>
