@@ -9,4 +9,4 @@ The application packs following features:
 - Sentiment Analysis of User Entries using Naive Bayes classifier as part of a Fuzzy Inference Tree.
 - Token based user authentication and row level security in PostgreSQL DB.
 
-!(https://github.com/Lakshya3190/journie/blob/master/journie.png)[ScreenShot]
+!()[https://github.com/Lakshya3190/journie/blob/master/journie.png]
