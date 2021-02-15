@@ -8,5 +8,8 @@ cmd-shift-v or ctrl-shift-v	Open preview
    - Explore implementation of Row-Level Security in PostgreSQL
 
 2.  Front-End
-    - How will signed-in user's data be accessed post sign-in?
-    - 
+    - How will signed-in user's data be accessed post sign-in? 
+      - Maybe express-session??
+
+### Read-up on how sessions and token based authenication works for web-apps.
+3. How does a single server handle multiple logins? Will I have to deploy express servers locally?
