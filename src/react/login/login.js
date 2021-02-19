@@ -9,7 +9,7 @@ class login extends React.Component {
     this.state = {
      email: '',
      password: '',
-     isLoggedIn: []
+     isLoggedIn: ''
     }
 }
 
@@ -31,13 +31,7 @@ onSubmitSignin = () => {
       })
   })
   .then(response => response.json())
-  .then(response => console.log(response))
-  .then(signInResponse => {
-     this.setState(Object.assign(this.state.isLoggedIn, {isLoggedIn: signInResponse}))
-    }
-  )
-
-  console.log("State:",this.state.isLoggedIn);
+  .then(user => console.log(user))
 }
 
   render() {
@@ -49,11 +43,11 @@ onSubmitSignin = () => {
               <legend class="f4 fw6 ph0 mh0">Sign In</legend>
               <div class="mt3">
                 <label class="db fw6 lh-copy f6" for="email-address">Email</label>
-                <input onClick = {this.onEmailChange} class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
+                <input onChange = {this.onEmailChange} class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
               </div>
               <div class="mv3">
                 <label class="db fw6 lh-copy f6" for="password">Password</label>
-                <input onClick = {this.onPasswordChange} class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
+                <input onChange = {this.onPasswordChange} class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
               </div>
             </fieldset>
             <div class="">
