@@ -9,7 +9,8 @@ class login extends React.Component {
     this.state = {
      email: '',
      password: '',
-     isLoggedIn: ''
+     isLoggedIn: false,
+     userId: {}
     }
 }
 
@@ -19,6 +20,11 @@ onEmailChange = (event) => {
 }
 onPasswordChange = (event) => {
   this.setState({password: event.target.value});
+}
+onSignedIn = () => {
+  if(this.state.isLoggedIn){
+    this.props.onRouteChange('homepage')
+  }
 }
 
 onSubmitSignin = () => {
@@ -31,7 +37,19 @@ onSubmitSignin = () => {
       })
   })
   .then(response => response.json())
-  .then(user => console.log(user))
+  .then(user => {
+    if(user.id){
+      this.setState({isLoggedIn: true})
+    }
+    else{
+      this.setState({isLoggedIn: false})
+    }
+    if(this.state.isLoggedIn){
+      this.setState(Object.assign(this.state.userId, {userId: user.id}))
+    }
+  })
+
+  console.log(this.state.userIdky)
 }
 
   render() {
@@ -51,7 +69,7 @@ onSubmitSignin = () => {
               </div>
             </fieldset>
             <div class="">
-              <input onClick = {this.onSubmitSignin} class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign In"/>
+              <input onClick = {() => {this.onSubmitSignin(); this.onSignedIn(); this.props.onUserSignIn(this.state.userId)}} class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign In"/>
             </div>
             <div class="lh-copy mt3">
               <a href="#0" class="f6 link dim black db" onClick = {() => this.props.onRouteChange('register')}>Sign up</a>

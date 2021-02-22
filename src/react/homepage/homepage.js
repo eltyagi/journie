@@ -28,18 +28,32 @@ class HomePage extends React.Component{
         today = new Date(),
         date = monthNames[today.getMonth()] + " "  + today.getDate() + ", " + today.getFullYear();
         this.state = {
-            currentDate: date
+            currentDate: date,
+            userData: {}
         }
         
     }
 
-    onAddToday = (event) => {
 
+    onEnterHomepage = () => {
+        fetch('http://localhost:3005/welcome', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: this.props.signedInUserId
+            })
+        })
+        .then(response => response.json())
+        .then(userData => {
+            this.setState(Object.assign(this.state.userData, ({userData: userData})))
+        })
+
+        console.log(this.state.userData)
     }
 
-    onAddDaily = (event) => {
-
-    }
+   componentDidMount = () => {
+        this.onEnterHomepage();
+    } 
 
     render(){
         return(

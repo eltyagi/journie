@@ -14,7 +14,8 @@ class App extends React.Component {
     this.state = {
       appName: '',
       appVersion: '',
-      route: 'signin'
+      route: 'signin',
+      signedInUserId: {}
     }
 
 
@@ -30,6 +31,11 @@ class App extends React.Component {
     this.setState({route:route});
   }
 
+  onUserSignIn = (id) => {
+    this.setState({signedInUserId: id})
+    console.log("Signed In User Id is:", this.state.signedInUserId)
+  }
+
   render() {
     const { appName, appVersion } = this.state;
     return (
@@ -37,13 +43,13 @@ class App extends React.Component {
         
         {
           this.state.route === 'signin'
-          ? <Login onRouteChange = {this.onRouteChange}/>
+          ? <Login onRouteChange = {this.onRouteChange} onUserSignIn = {this.onUserSignIn}/>
           : (
             this.state.route === 'register'
             ? <Register onRouteChange = {this.onRouteChange}/>
             :(
               this.state.route === 'homepage'
-              ? <HomePage onRouteChange = {this.onRouteChange}/>
+              ? <HomePage signedInUserId = {this.state.signedInUserId} onRouteChange = {this.onRouteChange}/>
               : null
             )
           )
