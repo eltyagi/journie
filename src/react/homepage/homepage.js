@@ -29,7 +29,8 @@ class HomePage extends React.Component{
         date = monthNames[today.getMonth()] + " "  + today.getDate() + ", " + today.getFullYear();
         this.state = {
             currentDate: date,
-            userData: {}
+            userData: {},
+            taskTab: 'today'
         }
         
     }
@@ -54,6 +55,18 @@ class HomePage extends React.Component{
    componentDidMount = () => {
         this.onEnterHomepage();
     } 
+
+    onTodayClick = () => {
+        this.setState({taskTab: 'today'})
+    }
+
+    onDailyClick = () => {
+        this.setState({taskTab: 'daily'})
+    }
+
+    onNotesClick = () => {
+        this.setState({taskTab: 'notes'})
+    }
 
     render(){
         return(
@@ -91,20 +104,25 @@ class HomePage extends React.Component{
                                         <p className = 'curr-date'>
                                             {this.state.currentDate}
                                         </p>
+                                        <p className = 'welcome-message'>
+                                            Welcome back, {this.state.userData.firstname}!
+                                        </p>
                                         <div className = 'in-cont1-menu'>
                                             
-                                            <p className = 'pointer dim in-cont1-op'>
+                                            
                                             <Link to = "/" style={{ textDecoration: 'none', color: 'black' }}>
+                                            <p onClick = {this.onTodayClick} style = {{background: this.state.taskTab === 'today' ? "#fac1b98f" : "", color: this.state.taskTab === 'today' ? "crimson" : "black"}} className = 'pointer in-cont1-op'>
                                                 Today
-                                            </Link>
                                             </p>
+                                            </Link>
+                                            
                                             
                                             <Link to = "/daily" style={{ textDecoration: 'none', color: 'black' }}>
-                                                <p className = 'pointer in-cont1-op'>Daily</p>
+                                                <p onClick = {this.onDailyClick} style = {{background: this.state.taskTab === 'daily' ? "#fac1b98f" : "", color: this.state.taskTab === 'daily' ? "crimson" : "black"}} className = 'pointer in-cont1-op'>Daily</p>
                                             </Link>
 
                                             <Link to = "/notes" style={{ textDecoration: 'none', color: 'black' }}>
-                                                <p className = 'pointer in-cont1-op'>Notes</p>
+                                                <p onClick = {this.onNotesClick} style = {{background: this.state.taskTab === 'notes' ? "#fac1b98f" : "", color: this.state.taskTab === 'notes' ? "crimson" : "black"}} className = 'pointer in-cont1-op'>Notes</p>
                                             </Link>
                                         </div>
 
@@ -172,6 +190,8 @@ class HomePage extends React.Component{
                     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet"/>
                     <link rel="preconnect" href="https://fonts.gstatic.com"/>
                     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Raleway:wght@100;800&display=swap" rel="stylesheet"/>
+                    <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+                    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet"></link>
             </div>
         );
     }

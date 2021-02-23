@@ -77,7 +77,7 @@ class notes extends React.Component{
 
         return(
             <div className = 'notes'>
-                <div onClick = {this.toggleAddTask} className = 'addTask_daily pointer'>
+                <div onClick = {this.toggleAddTask} className = 'addNotes pointer'>
                     Add New
                 </div>
 

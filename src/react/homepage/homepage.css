@@ -78,21 +78,40 @@ img{
 }
 
 .curr-date{
-    font-size: 30px;
-    margin-left: 10px;
-    margin-bottom: 30px;
+    font-size: 40px;
+    margin-left: 20px;
+    margin-bottom: 10px;
     margin-top: 50px;
+}
+
+.welcome-message{
+    font-size: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .in-cont1-menu{
     display: flex;
     font-size: 15px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Lato', sans-serif;
+    font-weight: bolder;
 }
 
 .in-cont1-op{
-    margin-left: 10px;
+    margin-left: 15px;
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    transition: background-color .5s;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 
+}
+
+.in-cont1-op:hover{
+    background-color: #fac1b98f;
+    color: crimson;
 }
 
 .in-cont2{
