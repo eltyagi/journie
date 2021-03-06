@@ -63,7 +63,7 @@ class register extends React.Component{
                     </div>
                     </fieldset>
                     <div class="">
-                    <input onClick = {() => {this.props.onRouteChange('homepage'); this.onSubmitRegister()}} class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign up"/>
+                    <input onClick = {() => {this.props.onRouteChange('signin'); this.onSubmitRegister()}} class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign up"/>
                     </div>
                     <div class="lh-copy mt3">
                     </div>

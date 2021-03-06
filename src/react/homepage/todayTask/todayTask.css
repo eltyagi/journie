@@ -1,10 +1,42 @@
 .todayTask{
     margin-left: 10px;
-}
+  }
+
+
+
 
 .addTask_today{
+  font-size: 30px;
+  font-weight: bolder;
   margin-top: 10px;
+  width: auto;
+  height: 50px;
+  border-radius: 10px;
+  transition: background-color .5s;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgb(134, 171, 240);
+  color: aliceblue;
+  margin-right: 10px;
+}
+
+.addTask_today:hover{
+  background-color: #fac1b98f;
+  color: red;
+}
+
+.add_dropdown{
+  transition: visibility .5s;
   margin-left: 10px;
+  width: auto;
+}
+
+.taskEntry{
+  background: linear-gradient(#f8ff97, #e5d691);
+  border-radius: 10px;
+  width: 400px;
+  height: 100px;
 }
 
 .input-field{
@@ -12,7 +44,7 @@
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: hidden;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 216, 166);
   margin-left: 10px;
 }
 

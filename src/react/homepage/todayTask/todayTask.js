@@ -12,9 +12,9 @@ class todayTask extends React.Component{
             taskType: "",
             taskTitle: "",
             taskDesc: "",
-            todayTaskData: []
+            todayTaskData: [],
+            userData: {}
         }
-
 
     }
 
@@ -35,37 +35,39 @@ class todayTask extends React.Component{
     }
 
     onSubmitTask = () => {
+        const user = this.props.signedInUser
         fetch('http://localhost:3005/addToday', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
+                userid: user,
                 taskType: this.state.taskType,
                 taskTitle: this.state.taskTitle,
                 taskDesc: this.state.taskDesc
             })
         })
-            .then((response => response.json()))
-            .then(todayTaskData => {
-                this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
-            }) 
-            console.log(this.state.todayTaskData)
+        .then((response => response.json()))
+        .then(todayTaskData => {
+            this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
+        }) 
+        console.log(this.state.todayTaskData)
     }
 
     onPageOpen = () => {
+        const user = this.props.signedInUser
+        console.log("The user is", user)
         fetch('http://localhost:3005/', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                taskType: this.state.taskType,
-                taskTitle: this.state.taskTitle,
-                taskDesc: this.state.taskDesc
+                userid: user,
             })
             })
             .then((response => response.json()))
             .then(todayTaskData => {
                 this.setState(Object.assign(this.state.todayTaskData, {todayTaskData: todayTaskData}))
             }) 
-            console.log(this.state.todayTaskData)
+            console.log("Today task data is:", this.state.todayTaskData)
     }
 
     componentDidMount = () => {
@@ -78,11 +80,14 @@ class todayTask extends React.Component{
 
         return(
             <div className = 'todayTask'>
+
+                <TodayTaskPortal className = 'mt2' taskData = {this.state.todayTaskData}/>    
+
                 <div onClick = {this.toggleAddTask} className = 'addTask_today pointer'>
-                    Add New
+                    +
                 </div>
 
-                <div style = {{visibility: this.state.addTaskVisibility ? "visible" : "hidden"}}>
+                <div className = 'add_dropdown' style = {{visibility: this.state.addTaskVisibility ? "visible" : "hidden"}}>
                     <input onChange = {this.onTaskTypeChange} type ="text" placeholder = "Task/Event" className = "input-field"></input>
                     <br/>
                     <input onChange = {this.onTaskTitleChange} type ="text" placeholder = "Title" className = "input-field"></input>
@@ -92,7 +97,7 @@ class todayTask extends React.Component{
                     <p onClick = {() => {this.toggleAddTask(); this.onSubmitTask()}} className = 'add-button pointer'>Add</p>
                 </div>
 
-                <TodayTaskPortal taskData = {this.state.todayTaskData}/>
+                
 
 
             </div>

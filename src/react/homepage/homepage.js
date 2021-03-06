@@ -13,6 +13,7 @@ import TodayTask from './todayTask/todayTask.js';
 import DailyTask from './dailyTask/dailyTask.js';
 import Notes from './notes/notes.js';
 import Editor from './jeditor/jeditor.js';
+import JournieHome from './jeditor/journie-home.js'
 import Overview from './overview/overview.js';
 import journal_image from './journal.png';
 import overview_image from './icons8-view-64.png';
@@ -30,7 +31,8 @@ class HomePage extends React.Component{
         this.state = {
             currentDate: date,
             userData: {},
-            taskTab: 'today'
+            taskTab: 'today',
+            userId: this.props.signedInUserId
         }
         
     }
@@ -49,7 +51,7 @@ class HomePage extends React.Component{
             this.setState(Object.assign(this.state.userData, ({userData: userData})))
         })
 
-        console.log(this.state.userData)
+        console.log("Complete user data upon signin:", this.state.userData)
     }
 
    componentDidMount = () => {
@@ -105,7 +107,7 @@ class HomePage extends React.Component{
                                             {this.state.currentDate}
                                         </p>
                                         <p className = 'welcome-message'>
-                                            Welcome back, {this.state.userData.firstname}!
+                                            To Do
                                         </p>
                                         <div className = 'in-cont1-menu'>
                                             
@@ -125,29 +127,30 @@ class HomePage extends React.Component{
                                                 <p onClick = {this.onNotesClick} style = {{background: this.state.taskTab === 'notes' ? "#fac1b98f" : "", color: this.state.taskTab === 'notes' ? "crimson" : "black"}} className = 'pointer in-cont1-op'>Notes</p>
                                             </Link>
                                         </div>
-
-                                        <Switch>
-                                            <Route path="/daily">
-                                            <div>
-                                                <DailyTask/>
-                                            </div>
-                                            </Route>
-                                            <Route path="/notes">
-                                                <div>
-                                                    <Notes/>
+                                        <div className = 'task-data'>
+                                            <Switch>
+                                                <Route path="/daily">
+                                                <div className>
+                                                    <DailyTask signedInUser = {this.state.userData}/>
                                                 </div>
-                                            </Route>
-                                            <Route path="/progress">
-                                                <div>
-                                                    <h1>Working?</h1>
-                                                </div>
-                                            </Route>
-                                            <Route path="/">
-                                                <div>
-                                                    <TodayTask/>
-                                                </div>
-                                            </Route>
-                                        </Switch>
+                                                </Route>
+                                                <Route path="/notes">
+                                                    <div>
+                                                        <Notes signedInUser = {this.state.userData}/>
+                                                    </div>
+                                                </Route>
+                                                <Route path="/progress">
+                                                    <div>
+                                                        <h1>Working?</h1>
+                                                    </div>
+                                                </Route>
+                                                <Route path="/">
+                                                    <div>
+                                                        <TodayTask signedInUser = {this.state.userId}/>
+                                                    </div>
+                                                </Route>
+                                            </Switch>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -156,7 +159,7 @@ class HomePage extends React.Component{
                                         <Switch>
                                                 <Route path="/dashboard">
                                                     <div>
-                                                       <Overview/>
+                                                       <Overview signedInUser = {this.state.userData}/>
                                                     </div>
                                                 </Route>
                                                 <Route path="/progress">
@@ -171,7 +174,7 @@ class HomePage extends React.Component{
                                                 </Route>
                                                 <Route path="/">
                                                     <div>
-                                                        <Editor/>
+                                                        <JournieHome signedInUser = {this.state.userId}/>
                                                     </div>
                                                 </Route>
                                             </Switch>

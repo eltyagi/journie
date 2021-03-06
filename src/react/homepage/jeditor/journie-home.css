@@ -1,0 +1,32 @@
+.journieHome{
+    font-family: 'Lato', sans-serif;
+    margin-left: 10px;
+}
+
+.dash-box1{
+    background: rgb(254,232,218);
+    background: linear-gradient(90deg, rgba(254,232,218,1) 18%, rgb(255, 215, 190) 100%);
+    border-radius: 30px;
+    height: 220px;
+    width: auto;
+    padding: 20px;
+}
+
+.dash-date{
+    margin: 0px;
+    padding: 0px;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.dash-welcome{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+.user-name{
+    color: crimson;
+    font-weight: bolder;
+}
