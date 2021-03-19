@@ -1,20 +1,21 @@
 import React from "react";
-import './notes.css';
+import './scheduleTask.css';
 import "tachyons";
-import NotesPortal from './notesPortal/notesPortal.js';
+import SchedulePortal from './notesPortal/schedulePortal.js';
 
 
 
-class notes extends React.Component{
+class schedule extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             addTaskVisibility: false,
             taskTitle: "",
             taskDesc: "",
-            dailyTaskData: []
+            scheduleDate: "",
+            scheduleTaskData: [],
+            userData: {}
         }
-
 
     }
 
@@ -30,41 +31,47 @@ class notes extends React.Component{
         this.setState({taskDesc: event.target.value})
     }
 
+    onTaskDateChange = (event) => {
+        this.setState({scheduleDate: event.target.value})
+    }
+
     toggleAddTask = () => {
         this.setState({addTaskVisibility: !this.state.addTaskVisibility});
     }
 
     onSubmitTask = () => {
-        fetch('http://localhost:3005/notesAdd', {
+        const user = this.props.signedInUser
+        fetch('http://localhost:3005/addSchedule', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                taskType: this.state.taskType,
+                userid: user,
                 taskTitle: this.state.taskTitle,
-                taskDesc: this.state.taskDesc
+                taskDesc: this.state.taskDesc,
+                scheduleDate: this.state.scheduleDate
             })
         })
             .then((response => response.json()))
-            .then(dailyTaskData => {
-                this.setState(Object.assign(this.state.dailyTaskData, {dailyTaskData: dailyTaskData}))
+            .then(scheduleTaskData => {
+                this.setState(Object.assign(this.state.scheduleTaskData, {scheduleTaskData: scheduleTaskData}))
             }) 
-            console.log(this.state.dailyTaskData)
     }
 
     onPageOpen = () => {
-        fetch('http://localhost:3005/notes', {
+        const user = this.props.signedInUser
+        fetch('http://localhost:3005/scheduleTask', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                taskTitle: this.state.taskTitle,
-                taskDesc: this.state.taskDesc
+                userid: user
             })
             })
             .then((response => response.json()))
-            .then(dailyTaskData => {
-                this.setState(Object.assign(this.state.dailyTaskData, {dailyTaskData: dailyTaskData}))
+            .then(scheduleTaskData => {
+                this.setState(Object.assign(this.state.scheduleTaskData, {scheduleTaskData: scheduleTaskData}))
             }) 
-            console.log(this.state.dailyTaskData)
+
+            console.log("Check", this.state.scheduleTaskData);
     }
 
     componentDidMount = () => {
@@ -76,25 +83,26 @@ class notes extends React.Component{
     render(){
 
         return(
-            <div className = 'notes'>
-                <div onClick = {this.toggleAddTask} className = 'addNotes pointer'>
-                    Add New
+            <div className = 'schedule'>
+
+                <SchedulePortal className = 'mt2' scheduleTaskData = {this.state.scheduleTaskData}/>
+                <div onClick = {this.toggleAddTask} className = 'addTask_schedule pointer'>
+                    +
                 </div>
 
-                <div style = {{visibility: this.state.addTaskVisibility ? "visible" : "hidden"}}>
+                <div className = 'add_dropdown' style = {{visibility: this.state.addTaskVisibility ? "visible" : "hidden"}}>
                     <input onChange = {this.onTaskTitleChange} type ="text" placeholder = "Title" className = "input-field"></input>
                     <br/>
                     <input onChange = {this.onTaskDesChange} type ="text" placeholder = "Description" className = "input-field"></input>
                     <br/>
+                    <input onChange = {this.onTaskDateChange} type ="text" placeholder = "YYYY-MM-DD" className = "input-field"></input>
+                    <br/>
                     <p onClick = {() => {this.toggleAddTask(); this.onSubmitTask()}} className = 'add-button pointer'>Add</p>
                 </div>
-
-                <NotesPortal taskData = {this.state.dailyTaskData}/>
-
 
             </div>
         );
     }
 }
 
-export default notes;
+export default schedule;

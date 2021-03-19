@@ -1,0 +1,48 @@
+.taskC{
+    width: 100%;
+    margin: 0px;
+    padding: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Lato', sans-serif;
+}
+
+.content{
+    width: 300px;
+}
+
+.taskC:hover{
+    transition: background-color 0.5s;
+    transition-property: all;
+    transition-timing-function: linear;
+    background-color: bisque;
+    cursor: pointer;
+}
+
+p{
+    margin: 0px;
+    padding: 0px;
+}
+
+.dot-type {
+    height: 15px;
+    width: 15px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+
+
+.card-title{
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.card-description{
+    font-size: 15px;
+}
+
+.button-done{
+    margin-left: 50px;
+}

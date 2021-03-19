@@ -55,7 +55,7 @@ class todayTask extends React.Component{
 
     onPageOpen = () => {
         const user = this.props.signedInUser
-        console.log("The user is", user)
+        console.log("What is user", user)
         fetch('http://localhost:3005/', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -96,9 +96,6 @@ class todayTask extends React.Component{
                     <br/>
                     <p onClick = {() => {this.toggleAddTask(); this.onSubmitTask()}} className = 'add-button pointer'>Add</p>
                 </div>
-
-                
-
 
             </div>
         );

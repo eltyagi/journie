@@ -1,9 +1,9 @@
 import React from 'react';
-import './taskCard.css';
+import './scheduleCard.css';
 import "tachyons"
-import Indent from './indent/indent.js';
 
-class taskCard extends React.Component{
+
+class scheduleCard extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -19,7 +19,7 @@ class taskCard extends React.Component{
     onDoneButtonHit = () => {
         const taskid = parseInt(this.props.taskid)
         console.log("Task id is:", taskid);
-        fetch('http://localhost:3005/doneTodayTask', {
+        fetch('http://localhost:3005/doneScheduleTask', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -32,7 +32,7 @@ class taskCard extends React.Component{
     onNotDoneButtonHit = () => {
         const taskid = parseInt(this.props.taskid)
         console.log("Task id is:", taskid);
-        fetch('http://localhost:3005/notdoneTodayTask', {
+        fetch('http://localhost:3005/notdoneScheduleTask', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -45,7 +45,7 @@ class taskCard extends React.Component{
     onDeleteButtonHit = () => {
         const taskid = parseInt(this.props.taskid)
         console.log("Task id is:", taskid);
-        fetch('http://localhost:3005/deleteTodayTask', {
+        fetch('http://localhost:3005/deleteScheduleTask', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -64,22 +64,22 @@ class taskCard extends React.Component{
     }
 
 
-
     render(){
 
-        const {key, type, title, desc} = this.props;
-        const card_type  = type;
+        const {key, title, desc, scheduleDate} = this.props;
+        const scheduledate = scheduleDate.slice(0,10);
         return(
             <div className = 'taskC' style = {{backgroundColor: this.state.isDue ? "" :"aquamarine"}}>
             
                 <div className = 'card-content' style = {{display: 'flex', justifyContent: 'spaceBetween'}}>
                     <div className = 'content'>
-                        <div style = {{display: 'flex', alignItems: 'center'}}>
-                        <div className = 'dot-type'></div><p className = 'card-type'>{type}</p>
+                    <div style = {{display: 'flex', alignItems: 'center'}}>
+                        <div className = 'dot-type'></div><p className = 'card-type'>{scheduledate}</p>
                         </div>
                         <p className = 'card-title'>{title}</p>
                         <p className = 'card-description'>{desc}</p><br/>
                     </div>
+
                     <div className = 'task-buttons'>
                         <div onClick = {() => {this.taskIsDue(); this.onDoneButtonHit()}} className = 'button-done'>
                             <span className="dot dot-done grow dim"></span>
@@ -91,16 +91,15 @@ class taskCard extends React.Component{
                             <span className="dot dot-delete grow dim"></span>
                         </div>
                     </div>
-                    
                 </div>
 
 
 
-                <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-                <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"></link>
+                <link rel="preconnect" href="https://fonts.gstatic.com"/>
+                <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap" rel="stylesheet"/>
             </div>
         );
     }
 }
 
-export default taskCard;
+export default scheduleCard;

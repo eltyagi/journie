@@ -4,10 +4,11 @@
 }
 
 .dash-box1{
+    color: rgb(0, 0, 0);
     background: rgb(254,232,218);
-    background: linear-gradient(90deg, rgba(254,232,218,1) 18%, rgb(255, 215, 190) 100%);
-    border-radius: 30px;
-    height: 220px;
+    background: linear-gradient(90deg, rgb(250, 232, 220) 18%, rgb(255, 220, 199) 100%);
+    border-radius: 20px;
+    height: 120px;
     width: auto;
     padding: 20px;
 }
@@ -29,4 +30,9 @@
 .user-name{
     color: crimson;
     font-weight: bolder;
+}
+
+.journal-button{
+    font-size: 50px;
+    margin-left: auto;
 }

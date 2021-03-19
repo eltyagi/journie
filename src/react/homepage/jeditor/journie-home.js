@@ -1,6 +1,7 @@
 import React from 'react';
 import './journie-home.css';
 import "tachyons";
+import Editor from './editor/jeditor.js';
 
 
 class journieHome extends React.Component{
@@ -14,7 +15,8 @@ class journieHome extends React.Component{
         this.state = {
             currentDate: date,
             userData: {},
-            userid: this.props.signedInUser
+            userid: this.props.signedInUser,
+            openEditor: "no"
         }
     }
 
@@ -39,22 +41,36 @@ class journieHome extends React.Component{
         this.onEnterHomepage();
     } 
 
+    onChangeEditor = () => {
+        this.setState({openEditor: "editor"})
+    }
+
+
+
     render(){
 
 
         return(
             <div className = 'journieHome'>
-            <div className = 'dash-box1'>
-                <div className = 'dash-welcome'>
-                    <p className = 'dash-welcome'>
-                    Welcome back, <span className = 'user-name'>{this.state.userData.firstname}</span>!
-                    </p>
-                    <p className = 'dash-date'>
-                        {this.state.currentDate}
-                    </p>
-                   
+            {
+                this.state.openEditor === "editor"
+                ? <Editor/>
+                : 
+                <div className = 'dash-box1' style = {{display: 'flex', alignItems: 'center'}}>
+                    <div className = 'dash-welcome'>
+                        <p className = 'dash-welcome'>
+                        Welcome back, <span className = 'user-name'>{this.state.userData.firstname}</span>!
+                        </p>
+                        <p className = 'dash-date'>
+                            {this.state.currentDate}
+                        </p>
+                    
+                    </div>
+                    <div onClick = {this.onChangeEditor} className = 'journal-button pointer grow'>
+                        + Journal
+                    </div>
                 </div>
-            </div>
+            }
 
 
                 <link rel="preconnect" href="https://fonts.gstatic.com"></link>

@@ -11,8 +11,7 @@ import {
 } from "react-router-dom";
 import TodayTask from './todayTask/todayTask.js';
 import DailyTask from './dailyTask/dailyTask.js';
-import Notes from './notes/notes.js';
-import Editor from './jeditor/jeditor.js';
+import ScheduleTask from './notes/scheduleTask.js';
 import JournieHome from './jeditor/journie-home.js'
 import Overview from './overview/overview.js';
 import journal_image from './journal.png';
@@ -67,7 +66,7 @@ class HomePage extends React.Component{
     }
 
     onNotesClick = () => {
-        this.setState({taskTab: 'notes'})
+        this.setState({taskTab: 'scheduleTask'})
     }
 
     render(){
@@ -77,9 +76,9 @@ class HomePage extends React.Component{
                 <div className = 'header'>
                     <div className = 'home-bg' style = {{display: 'flex'}}>
                         <div className = 'menu-bar'>
-                            <p className = 'heading'>
-                                J.
-                            </p>
+                            <div className = 'heading'>
+                                <span className = 'j'>J.</span>
+                            </div>
 
                             <div className = 'menu'>
                                 <Link to = "/" style={{ textDecoration: 'none', color: 'white' }}>
@@ -103,11 +102,8 @@ class HomePage extends React.Component{
 
                                 <div className = 'in-cont1'>
                                     <div>
-                                        <p className = 'curr-date'>
-                                            {this.state.currentDate}
-                                        </p>
-                                        <p className = 'welcome-message'>
-                                            To Do
+                                        <p className = 'to-do-title'>
+                                            To Do.
                                         </p>
                                         <div className = 'in-cont1-menu'>
                                             
@@ -120,23 +116,33 @@ class HomePage extends React.Component{
                                             
                                             
                                             <Link to = "/daily" style={{ textDecoration: 'none', color: 'black' }}>
-                                                <p onClick = {this.onDailyClick} style = {{background: this.state.taskTab === 'daily' ? "#fac1b98f" : "", color: this.state.taskTab === 'daily' ? "crimson" : "black"}} className = 'pointer in-cont1-op'>Daily</p>
+                                                <p onClick = {this.onDailyClick} 
+                                                   style = {{background: this.state.taskTab === 'daily' ? "#fac1b98f" : "", color: this.state.taskTab === 'daily' ? "crimson" : "black"}} 
+                                                   className = 'pointer in-cont1-op'
+                                                >
+                                                    Daily
+                                                </p>
                                             </Link>
 
-                                            <Link to = "/notes" style={{ textDecoration: 'none', color: 'black' }}>
-                                                <p onClick = {this.onNotesClick} style = {{background: this.state.taskTab === 'notes' ? "#fac1b98f" : "", color: this.state.taskTab === 'notes' ? "crimson" : "black"}} className = 'pointer in-cont1-op'>Notes</p>
+                                            <Link to = "/scheduleTask" style={{ textDecoration: 'none', color: 'black' }}>
+                                                <p onClick = {this.onNotesClick} 
+                                                   style = {{background: this.state.taskTab === 'scheduleTask' ? "#fac1b98f" : "", color: this.state.taskTab === 'scheduleTask' ? "crimson" : "black"}} 
+                                                   className = 'pointer in-cont1-op'
+                                                   >
+                                                       Scheduled
+                                                    </p>
                                             </Link>
                                         </div>
                                         <div className = 'task-data'>
                                             <Switch>
                                                 <Route path="/daily">
                                                 <div className>
-                                                    <DailyTask signedInUser = {this.state.userData}/>
+                                                    <DailyTask signedInUser = {this.state.userId}/>
                                                 </div>
                                                 </Route>
-                                                <Route path="/notes">
+                                                <Route path="/scheduleTask">
                                                     <div>
-                                                        <Notes signedInUser = {this.state.userData}/>
+                                                        <ScheduleTask signedInUser = {this.state.userId}/>
                                                     </div>
                                                 </Route>
                                                 <Route path="/progress">
@@ -145,7 +151,7 @@ class HomePage extends React.Component{
                                                     </div>
                                                 </Route>
                                                 <Route path="/">
-                                                    <div>
+                                                    <div className = 'ma0 pa0'>
                                                         <TodayTask signedInUser = {this.state.userId}/>
                                                     </div>
                                                 </Route>
