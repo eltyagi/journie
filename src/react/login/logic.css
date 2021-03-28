@@ -1,5 +1,11 @@
 .sign-in-form{
-    margin: 100px;
-    margin-left: 300px;
-    margin-right: 300px;
+    align-content: center;
+    background-color: aliceblue;
+    margin-left: 400px;
+    width: 600px;
 }
+
+.logo{
+    margin-left: 200px;
+}
+

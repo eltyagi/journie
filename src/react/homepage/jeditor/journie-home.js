@@ -2,6 +2,7 @@ import React from 'react';
 import './journie-home.css';
 import "tachyons";
 import Editor from './editor/jeditor.js';
+import Graph from './graph.PNG';
 
 
 class journieHome extends React.Component{
@@ -54,20 +55,67 @@ class journieHome extends React.Component{
             <div className = 'journieHome'>
             {
                 this.state.openEditor === "editor"
-                ? <Editor/>
+                ? <Editor userid = {this.state.userid}/>
                 : 
-                <div className = 'dash-box1' style = {{display: 'flex', alignItems: 'center'}}>
-                    <div className = 'dash-welcome'>
-                        <p className = 'dash-welcome'>
-                        Welcome back, <span className = 'user-name'>{this.state.userData.firstname}</span>!
-                        </p>
-                        <p className = 'dash-date'>
-                            {this.state.currentDate}
-                        </p>
-                    
+                <div>
+                    <div className = 'dash-box1' style = {{display: 'flex', alignItems: 'center'}}>
+                        <div className = 'dash-welcome'>
+                            <p className = 'dash-welcome'>
+                            Welcome back, <span className = 'user-name'>{this.state.userData.firstname}</span>!
+                            </p>
+                            <p className = 'dash-date'>
+                                {this.state.currentDate}
+                            </p>
+                        
+                        </div>
+                        <div onClick = {this.onChangeEditor} className = 'journal-button pointer grow'>
+                            + Journal
+                        </div>
                     </div>
-                    <div onClick = {this.onChangeEditor} className = 'journal-button pointer grow'>
-                        + Journal
+
+                    <div className = 'dash-box2'>
+                        <div className = 'dash-box2-title'>
+                            Progress
+                        </div>
+                        <div className = 'dash-box2-content'>
+
+                            <div>
+                                <img src = ''></img>
+                                <p>Today Tasks</p>
+                                <div className = 'today-progress-bar'>
+                                    <hr class="bar bar-today"/>   
+                                </div>
+                            </div>
+
+                            <div>
+                                <img src = ''></img>
+                                <p>Daily Tasks</p>
+                                <div className = 'daily-progress-bar'>
+                                    <hr class="bar bar-daily"/>  
+                                </div>
+                            </div>
+
+                            <div>
+                                <img src = ''></img>
+                                <p>Scheduled Tasks</p>
+                                <div className = 'scheduled-progress-bar'>
+                                    <hr class="bar bar-schedule"/>  
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className = 'dash-box2'>
+                        <div className = 'dash-box3-title'>
+                            Sentiment Analysis - Past Week
+                        </div>
+                        <div className = 'dash-box2-content'>
+                            <div className = 'graph'>
+                                <img src = {Graph}/>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             }

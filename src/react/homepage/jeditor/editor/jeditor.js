@@ -17,9 +17,7 @@ class jeditor extends React.Component{
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                taskType: this.state.taskType,
-                taskTitle: this.state.taskTitle,
-                taskDesc: this.state.taskDesc
+                userid:this.props.userid
             })
             })
             .then((response => response.json()))
@@ -33,6 +31,7 @@ class jeditor extends React.Component{
 
     componentDidMount = () => {
         this.onEditorOpen();
+        console.log("Journal Data:",this.state.data)
     }
 
 
@@ -43,7 +42,7 @@ class jeditor extends React.Component{
             <div className = 'editor'>
             <EditorJs
                 tools={EDITOR_JS_TOOLS}
-                data= {this.state.data}
+                data= {this.state.data.journaldata}
                 autofocus = 'true'
                 placeholder = 'Let`s write an awesome story!'
                 enableReInitialize={true}
@@ -56,7 +55,8 @@ class jeditor extends React.Component{
                                 method: 'post',
                                 headers: {'Content-Type': 'application/json'},
                                 body: JSON.stringify({
-                                    data: mydata
+                                    userid: this.props.userid,
+                                    saveData: mydata
                                 })
                                 })
                                 .then(console.log("Data being sent:", mydata))

@@ -18,17 +18,22 @@ class dailyTaskPortal extends React.Component{
                 return (
                     <TaskCard 
                     key = {i}
-                    type = {this.props.taskData[i].type}
-                    title = {this.props.taskData[i].title}
-                    desc = {this.props.taskData[i].desc}/>
+                    taskid = {this.props.taskData[i].dailytaskid}
+                    type = {this.props.taskData[i].tasktype}
+                    title = {this.props.taskData[i].tasktitle}
+                    desc = {this.props.taskData[i].taskdesc}
+                    isdone = {this.props.taskStatus[i]}
+                    user = {this.props.user}/>
                 );
             })
         
 
-
         return(
-            <div>
+            <div className = 'taskPortal'>
                {cardArray}
+
+               <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"></link>
             </div>
         );
     }

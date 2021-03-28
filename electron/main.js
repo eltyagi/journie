@@ -12,8 +12,10 @@ function createWindow () {
     slashes: true,
   });
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 800,
+    width: 1500,
+    height: 813,
+    transparent: true,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },

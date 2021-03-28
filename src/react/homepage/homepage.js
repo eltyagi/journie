@@ -71,10 +71,11 @@ class HomePage extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className = 'homepage'>
             <Router>
                 <div className = 'header'>
                     <div className = 'home-bg' style = {{display: 'flex'}}>
+                        
                         <div className = 'menu-bar'>
                             <div className = 'heading'>
                                 <span className = 'j'>J.</span>

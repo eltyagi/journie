@@ -13,7 +13,8 @@ class dailyTask extends React.Component{
             taskType: "",
             taskTitle: "",
             taskDesc: "",
-            dailyTaskData: []
+            dailyTaskData: [],
+            dailyTaskStatus: []
         }
 
 
@@ -36,10 +37,12 @@ class dailyTask extends React.Component{
     }
 
     onSubmitTask = () => {
-        fetch('http://localhost:3005/dailyAdd', {
+        const user = this.props.signedInUser
+        fetch('http://localhost:3005/addDaily', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
+                userid: user,
                 taskType: this.state.taskType,
                 taskTitle: this.state.taskTitle,
                 taskDesc: this.state.taskDesc
@@ -53,13 +56,13 @@ class dailyTask extends React.Component{
     }
 
     onPageOpen = () => {
-        fetch('http://localhost:3005/daily', {
+        const user = this.props.signedInUser
+        console.log("What is user", user)
+        fetch('http://localhost:3005/dailyTask', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                taskType: this.state.taskType,
-                taskTitle: this.state.taskTitle,
-                taskDesc: this.state.taskDesc
+                userid: user,
             })
             })
             .then((response => response.json()))
@@ -69,8 +72,29 @@ class dailyTask extends React.Component{
             console.log(this.state.dailyTaskData)
     }
 
+    checkDailyTaskStatus = () => {
+        const user = this.props.signedInUser
+        fetch("http://localhost:3005/dailyCheckTaskStatus", {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userid: user,
+            })
+        })
+        .then(response => response.json())
+        .then(dailyTaskStatus => {
+            this.setState(Object.assign(this.state.dailyTaskStatus, {dailyTaskStatus: dailyTaskStatus}))
+        })
+
+        console.log("Task status is:", this.state.dailyTaskStatus)
+
+    }
+
+
+
     componentDidMount = () => {
         this.onPageOpen();
+        this.checkDailyTaskStatus();
     }
 
    
@@ -79,11 +103,13 @@ class dailyTask extends React.Component{
 
         return(
             <div className = 'dailyTask'>
+
+                <DailyTaskPortal className = 'mt2' taskData = {this.state.dailyTaskData} taskStatus = {this.state.dailyTaskStatus} user = {this.props.signedInUser} />
                 <div onClick = {this.toggleAddTask} className = 'addTask_daily pointer'>
-                    Add New
+                    +
                 </div>
 
-                <div style = {{visibility: this.state.addTaskVisibility ? "visible" : "hidden"}}>
+                <div className = 'add_dropdown' style = {{visibility: this.state.addTaskVisibility ? "visible" : "hidden"}}>
                     <input onChange = {this.onTaskTypeChange} type ="text" placeholder = "Task/Event" className = "input-field"></input>
                     <br/>
                     <input onChange = {this.onTaskTitleChange} type ="text" placeholder = "Title" className = "input-field"></input>
@@ -92,8 +118,6 @@ class dailyTask extends React.Component{
                     <br/>
                     <p onClick = {() => {this.toggleAddTask(); this.onSubmitTask()}} className = 'add-button pointer'>Add</p>
                 </div>
-
-                <DailyTaskPortal taskData = {this.state.dailyTaskData}/>
 
 
             </div>
