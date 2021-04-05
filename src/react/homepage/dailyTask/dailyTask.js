@@ -72,29 +72,9 @@ class dailyTask extends React.Component{
             console.log(this.state.dailyTaskData)
     }
 
-    checkDailyTaskStatus = () => {
-        const user = this.props.signedInUser
-        fetch("http://localhost:3005/dailyCheckTaskStatus", {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                userid: user,
-            })
-        })
-        .then(response => response.json())
-        .then(dailyTaskStatus => {
-            this.setState(Object.assign(this.state.dailyTaskStatus, {dailyTaskStatus: dailyTaskStatus}))
-        })
-
-        console.log("Task status is:", this.state.dailyTaskStatus)
-
-    }
-
-
 
     componentDidMount = () => {
         this.onPageOpen();
-        this.checkDailyTaskStatus();
     }
 
    
@@ -104,7 +84,7 @@ class dailyTask extends React.Component{
         return(
             <div className = 'dailyTask'>
 
-                <DailyTaskPortal className = 'mt2' taskData = {this.state.dailyTaskData} taskStatus = {this.state.dailyTaskStatus} user = {this.props.signedInUser} />
+                <DailyTaskPortal className = 'mt2' taskData = {this.state.dailyTaskData} user = {this.props.signedInUser} />
                 <div onClick = {this.toggleAddTask} className = 'addTask_daily pointer'>
                     +
                 </div>

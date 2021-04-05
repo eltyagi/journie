@@ -24,6 +24,7 @@ class jeditor extends React.Component{
             .then(data => {
                 this.setState(Object.assign(this.state.data, {data: data}))
             })   
+            .catch(err => console.log("Editor Error:", err))
     }
 
  
@@ -63,7 +64,8 @@ class jeditor extends React.Component{
                                 .then((response => response.json()))
                                 .then(response => {
                                     console.log(response)
-                                })   
+                                })  
+                                .catch(err => console.log("Editor Error:", err)) 
                         })
                         console.log('Data sent successfully')
                     } catch (error) {

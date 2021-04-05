@@ -8,7 +8,7 @@ class taskCard extends React.Component{
         super(props);
         this.state = {
             isDue: true,
-            taskStatus: {}
+            taskStatus: []
         }
     }
 
@@ -57,13 +57,32 @@ class taskCard extends React.Component{
             .then(deletetask => this.setState({rerender: true}))
     }
 
+    onCheckTaskStatus = () => {
+        const taskid = parseInt(this.props.taskid)
+        console.log("Task id is:", taskid);
+        fetch('http://localhost:3005/dailyCheckTaskStatus', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                taskid: taskid,
+                userid: this.props.user
+            })
+            })
+        .then((response => response.json()))
+        .then(taskStatus => {
+            this.setState(Object.assign(this.state.taskStatus, {taskStatus: taskStatus}))
+        })
+        .catch(err => console.log("Error:", err))
+
+    }
+
     componentDidMount = () => {
-        console.log("Component did mount", this.props.isdone)
-        if(this.props.isdone === 1){
+        this.onCheckTaskStatus();
+        const taskStatus = this.state.taskStatus[0];
+        console.log("lololol",taskStatus)
+        if(taskStatus === 1){
             this.setState({isDue: false})
         }
-        console.log("In isdone task:", this.props.isdone)
-        console.log("In Daily Card User:", this.props.user)
     }
 
     render(){

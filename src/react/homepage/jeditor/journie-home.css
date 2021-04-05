@@ -5,8 +5,6 @@
 
 .dash-box1{
     color: rgb(0, 0, 0);
-    background: rgb(254,232,218);
-    background: linear-gradient(90deg, rgb(250, 232, 220) 18%, rgb(255, 220, 199) 100%);
     border-radius: 20px;
     height: 120px;
     width: auto;
@@ -22,7 +20,7 @@
 
 .dash-welcome{
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 900;
     margin: 0px;
     padding: 0px;
 }
@@ -33,64 +31,78 @@
 }
 
 .journal-button{
-    font-size: 50px;
+    font-size: 30px;
+    font-weight: 900;
     margin-left: auto;
+    background-color: rgb(245, 176, 73);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+
 }
 
 .dash-box2{
-    color: rgb(0, 0, 0);
-    background: rgb(254,232,218);
-    background: linear-gradient(90deg, rgb(250, 232, 220) 18%, rgb(255, 220, 199) 100%);
-    border-radius: 20px;
-    height: auto;
-    width: 400px;
+    margin-left: 20px;
+    width: 282px;
+    height: 100px;
+    background-color: rgba(245, 176, 73, 0.411);
+    border-radius: 10px;
     padding: 20px;
-    margin-top: 10px;
+
 }
 
-.dash-box2-title{
+.task-content{
+    color: rgb(0, 0, 0);
+}
+
+.task-data-title{
     font-size: 30px;
-    font-weight: bolder;
 }
 
-.bar{
-    text-align: left;
+.task-data{
+    font-size: 20px;
 }
 
-.bar-daily{
-    width: 60%;
-    border: 5px solid rgb(255, 182, 23);
-    border-radius: 5px;
-    color: rgb(255, 182, 23);
+.dashboard-data{
+    margin-left: 20px;
 }
-
-.bar-today{
-    width: 70%;
-    border: 5px solid red;
-    border-radius: 5px;
-}
-
-.bar-schedule{
-    width: 40%;
-    border: 5px solid green;
-    border-radius: 5px;
-}
-
-
 
 .dash-box3{
-    color: rgb(0, 0, 0);
-    background: rgb(254,232,218);
-    background: linear-gradient(90deg, rgb(250, 232, 220) 18%, rgb(255, 220, 199) 100%);
-    border-radius: 20px;
-    height: auto;
-    width: 400px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 240px;
+    height: 640px;
+    background-color: rgba(238, 221, 197, 0.267);
+    border-radius: 10px;
     padding: 20px;
-    margin-top: 10px;
 }
 
-.dash-box3-title{
-    margin: 5px;
+.walk-counter-title{
     font-size: 30px;
-    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.productivity-score{
+    width: 70%;
+}
+
+
+.dash-box3-box{
+    width: 200px;
+    height: 180px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.dash-box3-weather{
+    background-color: aquamarine;
+}
+
+.dash-box3-steps{
+ background-color: crimson;
+}
+
+.dash-box3-productivity{
+    background-color: darkorange;
 }
