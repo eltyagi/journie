@@ -96,7 +96,7 @@
 }
 
 .dash-box3-weather{
-    background-color: aquamarine;
+    background-color: rgb(71, 184, 250);
 }
 
 .dash-box3-steps{
@@ -105,4 +105,18 @@
 
 .dash-box3-productivity{
     background-color: darkorange;
+}
+
+.count{
+    font-size: 70px;
+    font-weight: bolder;
+    color: aliceblue;
+    margin: 10px;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bolder;
+    color: aliceblue;
+    margin: 10px;
 }

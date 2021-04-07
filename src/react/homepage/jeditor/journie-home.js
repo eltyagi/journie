@@ -294,20 +294,18 @@ class journieHome extends React.Component{
                         <div className = 'dash-box3 dash-box3-walk-counter'>
 
                             <div className = 'dash-box3-weather dash-box3-box'>
-                                <div className = "title">
-                                  
-                                </div>
-                                <div className = "count"></div>
+                            <div className = "count">28°</div>
+                                <div className = "title">Celsius</div>
                             </div>
 
                             <div className = 'dash-box3-steps dash-box3-box'>
-                                <div className = "title"></div>
-                                <div className = "count"></div>
+                                <div className = "count">3035</div>
+                                <div className = "title">Steps</div>
                             </div>
 
                             <div className = 'dash-box3-productivity dash-box3-box'>
-                                <div className = "title"></div>
-                                <div className = "count"></div>
+                            <div className = "count">0.43</div>
+                                <div className = "title">Productivity</div>
                             </div>
 
                             
