@@ -166,7 +166,7 @@ class HomePage extends React.Component{
                                         <Switch>
                                                 <Route path="/dashboard">
                                                     <div>
-                                                       <Overview signedInUser = {this.state.userData}/>
+                                                       <Overview signedInUser = {this.state.userId}/>
                                                     </div>
                                                 </Route>
                                                 <Route path="/progress">

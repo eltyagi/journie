@@ -1,8 +1,22 @@
-.card{
-    background-color: aqua;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
+.overview-title{
+    font-family: 'Lato', sans-serif;
+    font-size: 70px;
+    font-weight: 800;
+    margin: 20px;
+}
+
+.form-group{
+    margin-left: 20px;
+}
+
+.date-picker-btn{
+    width: 10%;
+    margin-left: 10px;
+    height: auto;
+    background-color: bisque;
+    color:crimson;
     text-align: center;
-    width: 100px;
+    border: 10px;
+    border-radius: 10px;
+    padding: 10px;
 }
