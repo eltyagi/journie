@@ -249,9 +249,9 @@ class journieHome extends React.Component{
                                 
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
-                    <div className = 'dashboard-data' style = {{display: "flex"}}>
+                        <div className = 'dashboard-data' style = {{display: "flex"}}>
 
                         <div className = 'productivity-score'>
                             <Line

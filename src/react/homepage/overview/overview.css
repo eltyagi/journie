@@ -1,3 +1,6 @@
+.overview{
+    font-family: 'Lato', sans-serif;
+}
 .overview-title{
     font-family: 'Lato', sans-serif;
     font-size: 70px;
@@ -19,4 +22,62 @@
     border: 10px;
     border-radius: 10px;
     padding: 10px;
+}
+
+.overview-score{
+    margin-top: 3%;
+}
+
+.dash-box3{
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 240px;
+    height: 640px;
+    background-color: rgba(238, 221, 197, 0.267);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.walk-counter-title{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.productivity-score{
+    width: 70%;
+}
+
+
+.dash-box3-box{
+    width: 200px;
+    height: 180px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.dash-box3-weather{
+    background-color: rgb(71, 184, 250);
+}
+
+.dash-box3-steps{
+ background-color: crimson;
+}
+
+.dash-box3-productivity{
+    background-color: darkorange;
+}
+
+.count{
+    font-size: 70px;
+    font-weight: bolder;
+    color: aliceblue;
+    margin: 10px;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bolder;
+    color: aliceblue;
+    margin: 10px;
 }
