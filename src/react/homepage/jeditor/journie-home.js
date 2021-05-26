@@ -25,7 +25,9 @@ class journieHome extends React.Component{
             dailyTaskTotal: [],
             dailyTaskDone: [],
             scheduleTaskTotal: [],
-            scheduleTaskDone: []
+            scheduleTaskDone: [],
+            productivityScore: {},
+            weekProductivityScore: []
 
         }
     }
@@ -142,6 +144,38 @@ class journieHome extends React.Component{
 
     }
 
+    onProductivityScore = () => {
+        fetch('http://localhost:3005/productivityScore', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userid: this.state.userid
+            })
+        })
+        .then(response => response.json())
+        .then(productivityScore => {
+            this.setState(Object.assign(this.state.productivityScore, ({productivityScore: productivityScore})))
+        })
+        .catch(err => console.log(err))
+
+    }
+
+    onWeekProductivityScore = () => {
+        fetch('http://localhost:3005/dashboardProductivityScore', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userid: this.state.userid
+            })
+        })
+        .then(response => response.json())
+        .then(weekProductivityScore => {
+            this.setState(Object.assign(this.state.weekProductivityScore, ({weekProductivityScore: weekProductivityScore})))
+        })
+        .catch(err => console.log(err))
+
+    }
+
 
 
    componentDidMount = () => {
@@ -152,6 +186,10 @@ class journieHome extends React.Component{
         this.onDailyDoneScore();
         this.onScheduleTotalScore();
         this.onScheduleDoneScore();
+        this.onProductivityScore();
+        this.onWeekProductivityScore();
+
+        console.log("looo", this.state.weekProductivityScore)
     } 
 
     onChangeEditor = () => {
@@ -164,6 +202,14 @@ class journieHome extends React.Component{
 
 
     render(){
+        let score_stat = []
+        const scoreStat = this.state.weekProductivityScore.map(
+            (user, i) => {
+                score_stat.push(parseFloat(this.state.weekProductivityScore[i].score));
+                console.log(score_stat)
+            }
+        )
+
         const rev_int_percent = [0.2, 0.3, 0.7, 0.2, 0.8, 0.2, 0.4]
         const rev_int_percent1 = [1000, 2500, 3154, 4981, 2000, 3000, 3000]
 
@@ -171,15 +217,15 @@ class journieHome extends React.Component{
             labels:['7','6','5','4','3','2','1'],
             datasets: [
                 {
-                label: 'Weekly Productivity Score',
-                fontSize: 15,
-                fontColor: 'white',
-                fill: false,
-                lineTension: 0.5,
-                backgroundColor: 'orange',
-                borderColor: 'brown',
-                borderWidth: 3,
-                data: rev_int_percent
+                    label: 'Weekly Productivity Score',
+                    fontSize: 15,
+                    fontColor: 'white',
+                    fill: false,
+                    lineTension: 0.5,
+                    backgroundColor: 'orange',
+                    borderColor: 'brown',
+                    borderWidth: 3,
+                    data: score_stat
                 }
             ]
         }
@@ -203,6 +249,7 @@ class journieHome extends React.Component{
 
         return(
             <div className = 'journieHome'>
+                {scoreStat}
             {
                 this.state.openEditor === "editor"
                 ? <Editor userid = {this.state.userid}/>
@@ -292,6 +339,10 @@ class journieHome extends React.Component{
                         </div>
 
                         <div className = 'dash-box3 dash-box3-walk-counter'>
+                            <div className = 'dash-box3-productivity dash-box3-box'>
+                            <div className = "count">{this.state.productivityScore.score}</div>
+                                <div className = "title">Productivity</div>
+                            </div>
 
                             <div className = 'dash-box3-weather dash-box3-box'>
                             <div className = "count">28°</div>
@@ -302,13 +353,6 @@ class journieHome extends React.Component{
                                 <div className = "count">3035</div>
                                 <div className = "title">Steps</div>
                             </div>
-
-                            <div className = 'dash-box3-productivity dash-box3-box'>
-                            <div className = "count">0.43</div>
-                                <div className = "title">Productivity</div>
-                            </div>
-
-                            
                             
                         </div>
 

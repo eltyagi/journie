@@ -25,7 +25,8 @@ class overview extends React.Component{
             dailyTaskDone: [],
             scheduleTaskTotal: [],
             scheduleTaskDone: [],
-            data: {}
+            journalOverviewData: {},
+            prodScore: []
         }
     }
 
@@ -153,16 +154,33 @@ class overview extends React.Component{
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 viewDate: this.state.startDate,
-                userid:this.props.userid
+                userid:this.state.userid
             })
             })
             .then((response => response.json()))
-            .then(data => {
-                this.setState(Object.assign(this.state.data, {data: data}))
+            .then(journalOverviewData => {
+                this.setState(Object.assign(this.state.journalOverviewData, {journalOverviewData: journalOverviewData}))
             })   
             .catch(err => console.log("Editor Error:", err))
             console.log("Date is:", this.state.startDate)
-            console.log("Data is",this.state.data)
+            console.log("Data is",this.state.journalOverviewData)
+
+
+
+        fetch('http://localhost:3005/overviewProductivityScore', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                viewDate: this.state.startDate,
+                userid: this.state.userid
+            })
+            })
+            .then((response => response.json()))
+            .then(prodScore => {
+                this.setState(Object.assign(this.state.prodScore, {prodScore: prodScore}))
+            })   
+            .catch(err => console.log("Editor Error:", err))
+            
 
     }
 
@@ -298,12 +316,28 @@ class overview extends React.Component{
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 viewDate: this.state.startDate,
-                userid:this.props.userid
+                userid: this.state.userid
             })
             })
             .then((response => response.json()))
-            .then(data => {
-                this.setState(Object.assign(this.state.data, {data: data}))
+            .then(journalOverviewData => {
+                this.setState(Object.assign(this.state.journalOverviewData, {journalOverviewData: journalOverviewData}))
+            })   
+            .catch(err => console.log("Editor Error:", err))
+    }
+
+    onOverviewProductivity = () => {
+        fetch('http://localhost:3005/overviewProductivityScore', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                viewDate: this.state.startDate,
+                userid: this.state.userid
+            })
+            })
+            .then((response => response.json()))
+            .then(prodScore => {
+                this.setState(Object.assign(this.state.prodScore, {prodScore: prodScore}))
             })   
             .catch(err => console.log("Editor Error:", err))
     }
@@ -318,6 +352,7 @@ class overview extends React.Component{
         this.onScheduleTotalScore();
         this.onScheduleDoneScore();
         this.onEditorOpen();
+        this.onOverviewProductivity();
         console.log("My data is",this.state.data)
     }
 
@@ -409,79 +444,31 @@ class overview extends React.Component{
                             </div>
                 </div>
 
-                <div className = 'dashboard-data' style = {{display: "flex"}}>
-
-                        <div className = 'productivity-score'>
-                            <Line
-                            data={state}
-                            options={{
-                                borderColor: 'orange',
-                                title:{
-                                display:true,
-                                text:'Productivity Score',
-                                fontSize:20,
-                                fontColor: 'white'
-                                },
-                                legend:{
-                                display:true,
-                                position:'top',
-                                fontColor: 'white'
-                                }
-                            }}
-                            />
-
-                            <Line
-                            data={state1}
-                            options={{
-                                borderColor: 'orange',
-                                title:{
-                                display:true,
-                                text:'Productivity Score',
-                                fontSize:20,
-                                fontColor: 'white'
-                                },
-                                legend:{
-                                display:true,
-                                position:'top',
-                                fontColor: 'white'
-                                }
-                            }}
-                            />
-                        </div>
+                <div className = '' style = {{display: "flex"}}>
 
                         <div className = 'dash-box3 dash-box3-walk-counter'>
 
-                            <div className = 'dash-box3-weather dash-box3-box'>
-                            <div className = "count">28°</div>
-                                <div className = "title">Celsius</div>
-                            </div>
-
-                            <div className = 'dash-box3-steps dash-box3-box'>
-                                <div className = "count">3035</div>
-                                <div className = "title">Steps</div>
-                            </div>
-
                             <div className = 'dash-box3-productivity dash-box3-box'>
-                            <div className = "count">0.43</div>
+                            <div className = "count">{this.state.prodScore.score}</div>
                                 <div className = "title">Productivity</div>
                             </div>
+                            
+                        </div>
 
-                            
-                            
+                        <div className = 'overviewEditor mt2'>
+                        <EditorJs
+                                tools={EDITOR_JS_TOOLS}
+                                data= {this.state.journalOverviewData.journaldata}
+                                autofocus = 'true'
+                                placeholder = 'No Data Exists for this date.'
+                                enableReInitialize={true}
+                                instanceRef={instance => this.editorInstance = instance} 
+                            />
                         </div>
 
                     </div>
 
-                    <div>
-                    <EditorJs
-                        tools={EDITOR_JS_TOOLS}
-                        data= {this.state.data.journaldata}
-                        autofocus = 'true'
-                        placeholder = 'Let`s write an awesome story!'
-                        enableReInitialize={true}
-                        instanceRef={instance => this.editorInstance = instance} 
-                    />
-                    </div>
+               
 
                 
 
