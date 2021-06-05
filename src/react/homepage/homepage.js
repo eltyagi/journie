@@ -88,9 +88,6 @@ class HomePage extends React.Component{
                                 <Link to = "/dashboard" style={{ textDecoration: 'none', color: 'white' }}>
                                     <p className = 'menu-op pointer'><img alt = '' src = {overview_image} height = 'auto' width = '40px'/></p>
                                 </Link>
-                                <Link to = "/progress" style={{ textDecoration: 'none', color: 'white' }}>
-                                    <p className = 'menu-op pointer'><img alt = '' src = {graph_image} height = 'auto' width = '40px'/></p>
-                                </Link>
                                 <Link to = "/settings" style={{ textDecoration: 'none', color: 'white' }}>
                                     <p className = 'menu-op pointer settings'><img alt = '' src = {settings_image} height = 'auto' width = '40px'/></p>
                                 </Link>
@@ -146,11 +143,6 @@ class HomePage extends React.Component{
                                                         <ScheduleTask signedInUser = {this.state.userId}/>
                                                     </div>
                                                 </Route>
-                                                <Route path="/progress">
-                                                    <div>
-                                                        <h1>Working?</h1>
-                                                    </div>
-                                                </Route>
                                                 <Route path="/">
                                                     <div className = 'ma0 pa0'>
                                                         <TodayTask signedInUser = {this.state.userId}/>
@@ -167,11 +159,6 @@ class HomePage extends React.Component{
                                                 <Route path="/dashboard">
                                                     <div>
                                                        <Overview signedInUser = {this.state.userId}/>
-                                                    </div>
-                                                </Route>
-                                                <Route path="/progress">
-                                                    <div>
-                                                        progress
                                                     </div>
                                                 </Route>
                                                 <Route path="/settings">
