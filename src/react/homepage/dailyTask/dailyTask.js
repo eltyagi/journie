@@ -2,6 +2,7 @@ import React from "react";
 import './dailyTask.css';
 import "tachyons";
 import DailyTaskPortal from './dailyTaskPortal/dailyTaskPortal.js';
+import Refresh from './refresh.png';
 
 
 
@@ -72,6 +73,10 @@ class dailyTask extends React.Component{
             console.log(this.state.dailyTaskData)
     }
 
+    forceUpdateHandler = () => {
+        this.onPageOpen();
+    }
+
 
     componentDidMount = () => {
         this.onPageOpen();
@@ -83,6 +88,8 @@ class dailyTask extends React.Component{
 
         return(
             <div className = 'dailyTask'>
+
+<div onClick = {this.forceUpdateHandler} className = 'pointer refresh-button'><img width = '30px' height = 'auto' src = {Refresh}/></div>
 
                 <DailyTaskPortal className = 'mt2' taskData = {this.state.dailyTaskData} user = {this.props.signedInUser} />
                 <div onClick = {this.toggleAddTask} className = 'addTask_daily pointer'>

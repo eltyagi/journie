@@ -5,6 +5,7 @@ import Editor from './editor/jeditor.js';
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
 import {Line} from 'react-chartjs-2';
+import Refresh from './refresh.png';
 
 
 class journieHome extends React.Component{
@@ -176,6 +177,10 @@ class journieHome extends React.Component{
 
     }
 
+    forceUpdateHandler = () => {
+        this.componentDidMount();
+    }
+
 
 
    componentDidMount = () => {
@@ -255,6 +260,7 @@ class journieHome extends React.Component{
                 ? <Editor userid = {this.state.userid}/>
                 : 
                 <div>
+                    <div onClick = {this.forceUpdateHandler} className = 'pointer refresh-button'><img width = '30px' height = 'auto' src = {Refresh}/></div>
                     <div className = 'dash-box1' style = {{display: 'flex', alignItems: 'center'}}>
                         <div className = 'dash-welcome'>
                             <p className = 'dash-welcome'>
@@ -345,8 +351,8 @@ class journieHome extends React.Component{
                             </div>
 
                             <div className = 'dash-box3-weather dash-box3-box'>
-                            <div className = "count">28°</div>
-                                <div className = "title">Celsius</div>
+                            <div className = "count">+ve</div>
+                                <div className = "title">Sentiment</div>
                             </div>
 
                             <div className = 'dash-box3-steps dash-box3-box'>

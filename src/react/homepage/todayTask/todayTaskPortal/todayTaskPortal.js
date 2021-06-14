@@ -6,11 +6,9 @@ class todayTaskPortal extends React.Component{
     constructor(props){
         super();
         this.state = {
-
+            
         }
     }
-
-
 
     render(){
         

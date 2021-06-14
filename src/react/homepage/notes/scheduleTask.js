@@ -2,6 +2,7 @@ import React from "react";
 import './scheduleTask.css';
 import "tachyons";
 import SchedulePortal from './notesPortal/schedulePortal.js';
+import Refresh from './refresh.png';
 
 
 
@@ -74,6 +75,10 @@ class schedule extends React.Component{
             console.log("Check", this.state.scheduleTaskData);
     }
 
+    forceUpdateHandler = () => {
+        this.onPageOpen();
+    }
+
     componentDidMount = () => {
         this.onPageOpen();
     }
@@ -84,6 +89,8 @@ class schedule extends React.Component{
 
         return(
             <div className = 'schedule'>
+
+                <div onClick = {this.forceUpdateHandler} className = 'pointer refresh-button'><img width = '30px' height = 'auto' src = {Refresh}/></div>
 
                 <SchedulePortal className = 'mt2' scheduleTaskData = {this.state.scheduleTaskData}/>
                 <div onClick = {this.toggleAddTask} className = 'addTask_schedule pointer'>

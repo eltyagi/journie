@@ -2,6 +2,7 @@ import React from "react";
 import './todayTask.css';
 import "tachyons";
 import TodayTaskPortal from './todayTaskPortal/todayTaskPortal.js';
+import Refresh from './refresh.png';
 
 
 class todayTask extends React.Component{
@@ -15,7 +16,6 @@ class todayTask extends React.Component{
             todayTaskData: [],
             userData: {}
         }
-
     }
 
     onTaskTypeChange = (event) => {
@@ -70,6 +70,10 @@ class todayTask extends React.Component{
             console.log("Today task data is:", this.state.todayTaskData)
     }
 
+    forceUpdateHandler = () => {
+        this.onPageOpen();
+    }
+
     componentDidMount = () => {
         this.onPageOpen();
     }
@@ -80,6 +84,8 @@ class todayTask extends React.Component{
 
         return(
             <div className = 'todayTask'>
+
+                <div onClick = {this.forceUpdateHandler} className = 'pointer refresh-button'><img width = '30px' height = 'auto' src = {Refresh}/></div>
 
                 <TodayTaskPortal className = 'mt2' taskData = {this.state.todayTaskData}/>    
 
