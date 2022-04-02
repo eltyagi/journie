@@ -11,13 +11,13 @@ Electron is not compatible with React out-of-the-box. While create-react-app set
 - Adding electron-start and electron-build scripts to package.json. 
 - Creating a “shared” folder for react-electron communication within the “Src” folder to ensure that it is packaged as a static file when building the react application.
 
-![](https://github.com/Lakshya3190/journie/blob/master/NODES.png)
+![](https://github.com/Lakshya3190/journie/blob/master/electron.png)
 
 ### Multi-Node User Behavior Tracking Engine
 
 A major feature of Journie is its ability to provide users with real-time insights about their activity. One enabler in this regard is the feature of user behavior tracking and sentiment analysis.
 For this purpose, a multi-node user behavior tracking engine is developed. This engine utilizes a combination of fuzzy-logic units, and machine learning models to output a productivity score for the user. This productivity score is stored in the database and is visible to the user on Journie’s dashboard.
 
-![](https://github.com/Lakshya3190/journie/blob/master/electron.png)
+![](https://github.com/Lakshya3190/journie/blob/master/NODES.png)
 
 
