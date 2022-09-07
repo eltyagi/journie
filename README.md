@@ -1,6 +1,18 @@
 # Journie
 
-Journie, a cross-platform artificial intelligence powered productivity tracking application is developed in this project. With a plethora of modern and interactive features, Journie aims to provide a smooth and seamless productivity tracking and journaling experience. Journie features a modern user-interface following the principles of minimalism and user comfort. Furthermore, Journie features a sentiment analysis model, and a multi-node user behavior tracking engine which aim to come together and offer users a personalized and easy-to-use way of tracking their productivity. All user data can be viewed from an interactive dashboard. As a multi-tenant application, all user data from Journie is stored in a single database, this allows for consolidated security, easier maintenance, and an optimized update cycle. Journie has been developed as a go-to application for all productivity needs and will continue to evolve with improved personalization and features.
+Journie, a productivity and habit tracking cross-platform application bring together the power of productivity tracking through technology along with the support of journaling under the umbrella of a single platform. From the user’s perspective, Journie possess the following features:
+  • Modern UI following minimal design principles and ease of use.
+  • Features to add, track, and delete a variety of events, tasks and upcoming points of
+  interest.
+  • An interactive dashboard for visualization of productivity in real time based on user
+  data.
+  • A flexible, easy to use word editor allowing users to personalize their journal.
+  • Cross-platform compatibility.
+  • A multi-node user productivity tracking engine to provide users with a productivity
+  score.
+  • An accurate sentiment analysis model to measure sentiment and polarity of user journal
+  entries.
+The culmination of all these features is a modern, easy to use application which allows user to capture, track and therefore improve their day-to-day lives.
 
 ![](https://github.com/Lakshya3190/journie/blob/master/UI.png)
 
